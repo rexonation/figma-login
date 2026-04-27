@@ -1,65 +1,85 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import React from "react";
+
+export default function LoginPage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <main className="relative flex min-h-screen items-center justify-center bg-white px-6">
+      
+      {/* Logo: Absolute on desktop, relative/centered on tiny screens if needed */}
+      <div className="absolute left-6 top-6 sm:left-10 sm:top-10">
+        <img 
+          src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" 
+          alt="Logo" 
+          className="h-8 w-auto sm:h-10"
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+      </div>
+
+      {/* Main Container: Adjusts width based on screen size */}
+      <div className="w-full max-w-[400px] py-20 sm:py-0 animate-in fade-in duration-700">
+        
+        <h1 className="mb-10 text-center text-[28px] sm:text-[32px] font-medium tracking-tight text-gray-900">
+          Sign in to Figma
+        </h1>
+
+        {/* Google Button */}
+        <button className="flex w-full items-center justify-center gap-3 rounded-lg border border-gray-300 bg-white py-3 text-base font-normal text-gray-900 transition-all hover:bg-gray-50 active:scale-[0.98]">
+          <img 
+            src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" 
+            alt="Google" 
+            className="w-5"
+          />
+          Continue with Google
+        </button>
+
+        <div className="relative my-8">
+          <div className="absolute inset-0 flex items-center">
+            <span className="w-full border-t border-gray-200"></span>
+          </div>
+          <div className="relative flex justify-center text-sm">
+            <span className="bg-white px-4 text-gray-500 font-light">or</span>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+
+        {/* Form Section */}
+        <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+          <div className="space-y-1.5">
+            <label className="block text-[10px] font-bold uppercase tracking-widest text-gray-500">
+              Email
+            </label>
+            <input 
+              type="email" 
+              className="w-full rounded-lg border border-gray-200 bg-[#f3f3f3] p-3.5 text-sm transition-all focus:border-black focus:bg-white focus:outline-none"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          </div>
+
+          <div className="space-y-1.5">
+            <label className="block text-[10px] font-bold uppercase tracking-widest text-gray-500">
+              Password
+            </label>
+            <input 
+              type="password" 
+              className="w-full rounded-lg border border-gray-200 bg-[#f3f3f3] p-3.5 text-sm transition-all focus:border-black focus:bg-white focus:outline-none"
+            />
+          </div>
+
+          <button 
+            type="submit" 
+            className="mt-2 w-full rounded-lg bg-black py-3.5 text-sm font-bold text-white transition-all hover:bg-gray-800 active:scale-[0.98]"
           >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+            Log in
+          </button>
+        </form>
+
+        {/* Links Section */}
+        <nav className="mt-8 flex flex-col items-center space-y-4 text-[14px]">
+          <a href="#" className="text-blue-500 hover:underline decoration-1">Use single sign-on</a>
+          <a href="#" className="text-blue-500 hover:underline decoration-1">Reset password</a>
+          <p className="pt-2 text-gray-500">
+            No account? <a href="#" className="font-semibold text-blue-500 hover:underline">Create one</a>
+          </p>
+        </nav>
+      </div>
+    </main>
   );
 }
